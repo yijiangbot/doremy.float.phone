@@ -380,6 +380,9 @@ class MainActivity : AppCompatActivity() {
         })
 
         // 冷启动带深链（如来电接听）直接加载目标；否则加载首页
+        webView.settings.domStorageEnabled = true
+        webView.setLayerType(android.view.View.LAYER_TYPE_HARDWARE, null)
+        webView.settings.mixedContentMode = android.webkit.WebSettings.MIXED_CONTENT_ALWAYS_ALLOW
         webView.loadUrl(consumeOpenUrl(intent) ?: SITE_URL)
         ensurePushService()
     }
